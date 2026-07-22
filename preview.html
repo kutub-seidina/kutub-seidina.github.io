@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#6B4F3A">
+  <meta name="description" content="صفحة تواصل لإعادة كتاب من مكتبة شخصية إلى صاحبه.">
+  <title>إعادة كتاب | مكتبة شخصية</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #F7F3EC;
+      --card: #FFFDF9;
+      --ink: #252525;
+      --muted: #6D665E;
+      --primary: #6B4F3A;
+      --primary-hover: #563D2C;
+      --olive: #465744;
+      --border: #DED5C8;
+      --soft: #F0E8DD;
+      --success: #315B3B;
+      --shadow: 0 18px 50px rgba(64, 45, 31, 0.10);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --focus: 0 0 0 4px rgba(107, 79, 58, 0.20);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(107, 79, 58, 0.08), transparent 26rem),
+        radial-gradient(circle at 90% 92%, rgba(70, 87, 68, 0.08), transparent 24rem),
+        var(--paper);
+      font-family: "Tajawal", system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    button, a { font: inherit; }
+    a { color: inherit; }
+
+    .page {
+      width: min(100% - 28px, 680px);
+      margin-inline: auto;
+      padding: max(24px, env(safe-area-inset-top)) 0 max(28px, env(safe-area-inset-bottom));
+    }
+
+    .shell {
+      overflow: hidden;
+      background: rgba(255, 253, 249, 0.92);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      position: relative;
+      padding: 34px 24px 28px;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: "";
+      display: block;
+      width: min(240px, 62%);
+      height: 1px;
+      margin: 24px auto 0;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .logo {
+      display: grid;
+      place-items: center;
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 16px;
+      color: var(--primary);
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 7px rgba(255, 253, 249, 0.72);
+    }
+
+    .logo svg { width: 44px; height: 44px; }
+
+    .library-name {
+      margin: 0;
+      color: var(--primary);
+      font-family: "Amiri", Georgia, serif;
+      font-size: clamp(2rem, 8vw, 2.8rem);
+      line-height: 1.3;
+    }
+
+    .library-type {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    main { padding: 0 24px 28px; }
+
+    .message { text-align: center; }
+
+    .message h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.45rem, 5vw, 1.9rem);
+      line-height: 1.45;
+    }
+
+    .message p {
+      max-width: 520px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .contact {
+      margin-top: 26px;
+      padding: 20px;
+      background: linear-gradient(145deg, #FFFDF9, #FAF5EE);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .primary-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 54px;
+      padding: 13px 18px;
+      color: #fff;
+      background: var(--primary);
+      border: 0;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(107, 79, 58, 0.19);
+      transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .primary-action:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 13px 28px rgba(107, 79, 58, 0.23);
+      transform: translateY(-1px);
+    }
+
+    .primary-action:active { transform: translateY(0); }
+
+    .primary-action:focus-visible,
+    .copy-button:focus-visible {
+      outline: none;
+      box-shadow: var(--focus);
+    }
+
+    .primary-action svg,
+    .copy-button svg {
+      flex: 0 0 auto;
+      width: 21px;
+      height: 21px;
+    }
+
+    .email-label {
+      margin: 18px 0 8px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    .email-row {
+      display: flex;
+      align-items: stretch;
+      gap: 8px;
+      direction: ltr;
+    }
+
+    .email-address {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      flex: 1;
+      padding: 11px 13px;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.9rem;
+      text-align: left;
+      user-select: all;
+    }
+
+    .copy-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-width: 94px;
+      padding: 10px 12px;
+      color: var(--primary);
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .copy-button:hover { background: #E9DED0; }
+    .copy-button:active { transform: scale(0.98); }
+
+    .steps {
+      margin-top: 18px;
+      padding: 22px 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 15px;
+      color: var(--olive);
+      font-size: 1.12rem;
+    }
+
+    .section-title svg { width: 23px; height: 23px; }
+
+    .steps ol {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: return-steps;
+    }
+
+    .steps li {
+      position: relative;
+      min-height: 64px;
+      padding: 4px 48px 18px 0;
+      color: #49443F;
+      counter-increment: return-steps;
+    }
+
+    .steps li:last-child {
+      min-height: 46px;
+      padding-bottom: 4px;
+    }
+
+    .steps li::before {
+      content: counter(return-steps);
+      position: absolute;
+      z-index: 1;
+      top: 2px;
+      right: 0;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      color: var(--primary);
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      font-weight: 700;
+    }
+
+    .steps li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 36px;
+      right: 16px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .step-title {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .step-description {
+      display: block;
+      color: #49443F;
+    }
+
+    .report-form-section {
+      margin-top: 18px;
+      padding: 22px 20px;
+      background: linear-gradient(145deg, #FFFDF9, #FAF5EE);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .form-intro {
+      margin: -5px 0 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .report-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-field label,
+    .form-legend {
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    .field-hint {
+      margin: -3px 0 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 13px;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      outline: none;
+      font: inherit;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .form-field textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--primary);
+      box-shadow: var(--focus);
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: #9A9187;
+    }
+
+    .reply-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
+      gap: 10px;
+    }
+
+    .file-input-wrap {
+      position: relative;
+      display: grid;
+      gap: 10px;
+    }
+
+    .file-input {
+      padding: 8px !important;
+      cursor: pointer;
+    }
+
+    .file-input::file-selector-button {
+      margin-left: 10px;
+      padding: 8px 12px;
+      color: var(--primary);
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+    }
+
+    .image-preview {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .image-preview.visible {
+      display: flex;
+    }
+
+    .image-preview img {
+      width: 64px;
+      height: 64px;
+      flex: 0 0 auto;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .image-preview-text {
+      min-width: 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+      overflow-wrap: anywhere;
+    }
+
+    .submit-report {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 18px;
+      color: #fff;
+      background: var(--olive);
+      border: 0;
+      border-radius: 13px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 9px 22px rgba(70, 87, 68, 0.18);
+      transition: transform 160ms ease, filter 160ms ease;
+    }
+
+    .submit-report:hover {
+      filter: brightness(0.94);
+      transform: translateY(-1px);
+    }
+
+    .submit-report:active {
+      transform: translateY(0);
+    }
+
+    .submit-report:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(70, 87, 68, 0.22);
+    }
+
+    .submit-report svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .form-note {
+      margin: -4px 0 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    .privacy {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      margin-top: 18px;
+      padding: 15px 16px;
+      color: #4C514A;
+      background: #F4F6F1;
+      border: 1px solid #D9E0D4;
+      border-radius: 14px;
+      font-size: 0.92rem;
+    }
+
+    .privacy svg {
+      flex: 0 0 auto;
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      color: var(--olive);
+    }
+
+    .privacy p { margin: 0; }
+
+    footer {
+      padding: 22px 24px 26px;
+      color: var(--muted);
+      background: rgba(240, 232, 221, 0.52);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .toast {
+      position: fixed;
+      right: 50%;
+      bottom: max(22px, env(safe-area-inset-bottom));
+      z-index: 10;
+      max-width: calc(100% - 32px);
+      padding: 11px 16px;
+      color: #fff;
+      background: var(--success);
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(37, 37, 37, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(50%, 16px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(50%, 0);
+    }
+
+    .noscript {
+      margin: 12px 24px 24px;
+      padding: 12px;
+      color: #6B3D2E;
+      background: #FFF2EC;
+      border: 1px solid #EDC7B8;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        width: min(100% - 18px, 680px);
+        padding-top: 10px;
+      }
+      .shell { border-radius: 20px; }
+      .hero { padding: 28px 18px 24px; }
+      main { padding-inline: 16px; }
+      .contact, .steps, .report-form-section { padding-inline: 15px; }
+      .email-row { flex-direction: column; }
+      .reply-grid { grid-template-columns: 1fr; }
+      .copy-button { width: 100%; min-height: 46px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="shell">
+      <header class="hero">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 15.5c8.7-2.8 16.6-.7 24 5.8v29.2c-7.4-6.5-15.3-8.6-24-5.8V15.5Z"/>
+            <path d="M56 15.5c-8.7-2.8-16.6-.7-24 5.8v29.2c7.4-6.5 15.3-8.6 24-5.8V15.5Z"/>
+            <path d="M14 23.5c4.6-.8 8.6.2 12.4 2.7M14 31.5c4.6-.8 8.6.2 12.4 2.7M50 23.5c-4.6-.8-8.6.2-12.4 2.7M50 31.5c-4.6-.8-8.6.2-12.4 2.7"/>
+          </svg>
+        </div>
+
+        <h1 class="library-name" id="libraryName">مكتبة اسمك</h1>
+        <p class="library-type">مكتبة شخصية</p>
+      </header>
+
+      <main>
+        <section class="message" aria-labelledby="welcomeTitle">
+          <h2 id="welcomeTitle">شكراً لحرصك على إعادة هذا الكتاب</h2>
+          <p>
+            هذا الكتاب من مقتنيات مكتبة شخصية. إذا عثرت عليه أو وصل إليك بطريق الخطأ،
+            يرجى التواصل معنا لترتيب إعادته.
+          </p>
+        </section>
+
+        <section class="contact" aria-label="وسائل التواصل">
+          <a class="primary-action" id="emailButton" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="m4 7 8 6 8-6"/>
+            </svg>
+            <span>إرسال بريد لإعادة الكتاب</span>
+          </a>
+
+          <p class="email-label">أو تواصل عبر البريد:</p>
+
+          <div class="email-row">
+            <span class="email-address" id="emailAddress">kutub.name@gmail.com</span>
+            <button class="copy-button" id="copyEmail" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="11" height="11" rx="2"/>
+                <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"/>
+              </svg>
+              <span>نسخ البريد</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="report-form-section" aria-labelledby="reportFormTitle">
+          <h2 class="section-title" id="reportFormTitle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16v16H4z"/>
+              <path d="m4 7 8 6 8-6"/>
+              <path d="M8 3v2M16 3v2"/>
+            </svg>
+            إرسال بلاغ سريع
+          </h2>
+
+          <p class="form-intro">
+            يمكنك إرسال معلومات الكتاب مباشرة من هنا، وسنرد عليك عبر الوسيلة التي تختارها.
+          </p>
+
+          <form
+            class="report-form"
+            id="bookReportForm"
+            action="https://formsubmit.co/kutub.name@gmail.com"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input type="hidden" name="_subject" value="بلاغ جديد عن كتاب تم العثور عليه">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+
+            <div class="form-field">
+              <label for="bookTitle">اسم الكتاب</label>
+              <input
+                id="bookTitle"
+                name="اسم الكتاب"
+                type="text"
+                autocomplete="off"
+                placeholder="اكتب اسم الكتاب إن كان معروفاً"
+                required
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="bookCover">صورة غلاف الكتاب <span aria-hidden="true">(اختياري)</span></label>
+              <div class="file-input-wrap">
+                <input
+                  class="file-input"
+                  id="bookCover"
+                  name="attachment"
+                  type="file"
+                  accept="image/png,image/jpeg"
+                >
+                <p class="field-hint">صورة JPG أو PNG، وبحجم لا يتجاوز 10 ميجابايت.</p>
+                <div class="image-preview" id="imagePreview" aria-live="polite">
+                  <img id="imagePreviewThumbnail" alt="معاينة صورة غلاف الكتاب">
+                  <span class="image-preview-text" id="imagePreviewName"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="foundLocation">مكان العثور عليه</label>
+              <input
+                id="foundLocation"
+                name="مكان العثور على الكتاب"
+                type="text"
+                autocomplete="off"
+                placeholder="مثال: مكتبة، جامعة، مقهى أو حي"
+                required
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="reportMessage">رسالة قصيرة <span aria-hidden="true">(اختياري)</span></label>
+              <textarea
+                id="reportMessage"
+                name="الرسالة"
+                placeholder="أضف أي تفاصيل تساعد على التعرّف على الكتاب أو ترتيب إعادته"
+              ></textarea>
+            </div>
+
+            <div class="form-field">
+              <span class="form-legend">وسيلة الرد المفضلة</span>
+              <div class="reply-grid">
+                <select id="replyMethod" name="وسيلة الرد المفضلة" required>
+                  <option value="" selected disabled>اختر الوسيلة</option>
+                  <option value="البريد الإلكتروني">البريد الإلكتروني</option>
+                  <option value="واتساب أو اتصال">واتساب أو اتصال</option>
+                  <option value="تيليغرام">تيليغرام</option>
+                  <option value="وسيلة أخرى">وسيلة أخرى</option>
+                </select>
+                <input
+                  id="replyContact"
+                  name="بيانات التواصل للرد"
+                  type="text"
+                  autocomplete="email"
+                  placeholder="اكتب البريد أو الرقم أو اسم المستخدم"
+                  required
+                >
+              </div>
+              <p class="field-hint">لن تُستخدم هذه البيانات إلا للرد بشأن إعادة الكتاب.</p>
+            </div>
+
+            <button class="submit-report" type="submit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m22 2-7 20-4-9-9-4Z"/>
+                <path d="M22 2 11 13"/>
+              </svg>
+              <span>إرسال البلاغ</span>
+            </button>
+
+            <p class="form-note">تُرسل معلومات البلاغ وصورة الغلاف مباشرة إلى بريد المكتبة.</p>
+          </form>
+        </section>
+
+        <section class="steps" aria-labelledby="stepsTitle">
+          <h2 class="section-title" id="stepsTitle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 6h13M8 12h13M8 18h13"/>
+              <path d="M3 6h.01M3 12h.01M3 18h.01"/>
+            </svg>
+            كيفية إعادة الكتاب
+          </h2>
+
+          <ol>
+            <li>
+              <span class="step-title">عرّفنا بالكتاب</span>
+              <span class="step-description">أرسل اسم الكتاب أو صورة واضحة لغلافه.</span>
+            </li>
+            <li>
+              <span class="step-title">حدد مكان العثور عليه</span>
+              <span class="step-description">اذكر المكان الذي عثرت عليه فيه.</span>
+            </li>
+            <li>
+              <span class="step-title">نسّق طريقة الإعادة</span>
+              <span class="step-description">سنتفق معك على وسيلة مناسبة لاستلامه.</span>
+            </li>
+          </ol>
+        </section>
+
+        <aside class="privacy" aria-label="ملاحظة الخصوصية">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <p>
+            لن نطلب منك إنشاء حساب أو تقديم معلومات شخصية غير ضرورية.
+            البريد مخصص فقط للتواصل المتعلق بالكتب.
+          </p>
+        </aside>
+      </main>
+
+      <footer>
+        <strong id="footerLibraryName">مكتبة اسمك الشخصية</strong>
+        شكراً لأمانتك وحرصك على إعادة الكتب إلى أصحابها.
+      </footer>
+    </div>
+
+    <noscript>
+      <div class="noscript">
+        يلزم تفعيل JavaScript لاستخدام زر نسخ البريد، ويمكنك مراسلتنا مباشرة عبر البريد الظاهر في الصفحة.
+      </div>
+    </noscript>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">تم نسخ البريد الإلكتروني</div>
+
+  <script>
+    /*
+      عدّل هاتين القيمتين فقط قبل رفع الصفحة:
+      1) libraryName: اسمك أو اسم المكتبة
+      2) email: البريد الإلكتروني المخصص للمكتبة
+    */
+    const CONFIG = {
+      libraryName: "سَيْدِنا",
+      email: "kutub.seidina@gmail.com"
+    };
+
+    const emailSubject = "العثور على كتاب من مكتبتكم";
+    const emailBody = `السلام عليكم،
+
+عثرت على كتاب يحمل ختم مكتبتكم، وأرغب في التنسيق لإعادته.
+
+اسم الكتاب:
+مكان العثور عليه:
+وسيلة التواصل المناسبة:
+
+وشكراً.`;
+
+    const libraryName = document.getElementById("libraryName");
+    const footerLibraryName = document.getElementById("footerLibraryName");
+    const emailAddress = document.getElementById("emailAddress");
+    const emailButton = document.getElementById("emailButton");
+    const copyEmail = document.getElementById("copyEmail");
+    const toast = document.getElementById("toast");
+    const bookReportForm = document.getElementById("bookReportForm");
+    const bookCover = document.getElementById("bookCover");
+    const imagePreview = document.getElementById("imagePreview");
+    const imagePreviewThumbnail = document.getElementById("imagePreviewThumbnail");
+    const imagePreviewName = document.getElementById("imagePreviewName");
+
+    libraryName.textContent = `مكتبة ${CONFIG.libraryName}`;
+    footerLibraryName.textContent = `مكتبة ${CONFIG.libraryName} الشخصية`;
+    emailAddress.textContent = CONFIG.email;
+    bookReportForm.action = `https://formsubmit.co/${CONFIG.email}`;
+
+    const mailto =
+      `mailto:${CONFIG.email}` +
+      `?subject=${encodeURIComponent(emailSubject)}` +
+      `&body=${encodeURIComponent(emailBody)}`;
+
+    emailButton.href = mailto;
+
+    let toastTimer;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    async function copyEmailAddress() {
+      try {
+        await navigator.clipboard.writeText(CONFIG.email);
+        showToast("تم نسخ البريد الإلكتروني");
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(emailAddress);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        try {
+          document.execCommand("copy");
+          selection.removeAllRanges();
+          showToast("تم نسخ البريد الإلكتروني");
+        } catch {
+          showToast("تعذر النسخ؛ حدّد البريد وانسخه يدوياً");
+        }
+      }
+    }
+
+    let previewObjectUrl = null;
+
+    bookCover.addEventListener("change", () => {
+      const [file] = bookCover.files;
+
+      if (previewObjectUrl) {
+        URL.revokeObjectURL(previewObjectUrl);
+        previewObjectUrl = null;
+      }
+
+      imagePreview.classList.remove("visible");
+      imagePreviewThumbnail.removeAttribute("src");
+      imagePreviewName.textContent = "";
+      bookCover.setCustomValidity("");
+
+      if (!file) return;
+
+      const maxFileSize = 10 * 1024 * 1024;
+      if (file.size > maxFileSize) {
+        bookCover.setCustomValidity("حجم الصورة أكبر من 10 ميجابايت.");
+        bookCover.reportValidity();
+        bookCover.value = "";
+        showToast("اختر صورة لا يتجاوز حجمها 10 ميجابايت");
+        return;
+      }
+
+      previewObjectUrl = URL.createObjectURL(file);
+      imagePreviewThumbnail.src = previewObjectUrl;
+      imagePreviewName.textContent = file.name;
+      imagePreview.classList.add("visible");
+    });
+
+    bookReportForm.addEventListener("submit", () => {
+      const submitButton = bookReportForm.querySelector(".submit-report");
+      submitButton.disabled = true;
+      submitButton.querySelector("span").textContent = "جارٍ إرسال البلاغ…";
+    });
+
+    copyEmail.addEventListener("click", copyEmailAddress);
+  </script>
+</body>
+</html>
