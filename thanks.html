@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#6B4F3A">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="تأكيد نجاح إرسال بلاغ إعادة كتاب.">
+  <title>تم إرسال البلاغ | مكتبة شخصية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F7F3EC;
+      --card: #FFFDF9;
+      --ink: #252525;
+      --muted: #6D665E;
+      --primary: #6B4F3A;
+      --primary-hover: #563D2C;
+      --olive: #465744;
+      --border: #DED5C8;
+      --soft: #F0E8DD;
+      --shadow: 0 18px 50px rgba(64, 45, 31, 0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: max(24px, env(safe-area-inset-top)) 14px max(24px, env(safe-area-inset-bottom));
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(107, 79, 58, 0.08), transparent 26rem),
+        radial-gradient(circle at 90% 92%, rgba(70, 87, 68, 0.08), transparent 24rem),
+        var(--paper);
+      font-family: "Tajawal", system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    .card {
+      width: min(100%, 620px);
+      padding: clamp(28px, 7vw, 48px) clamp(20px, 6vw, 44px);
+      text-align: center;
+      background: rgba(255, 253, 249, 0.94);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    .success-icon {
+      display: grid;
+      place-items: center;
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 18px;
+      color: #fff;
+      background: var(--olive);
+      border: 8px solid #E8EDE5;
+      border-radius: 50%;
+    }
+    .success-icon svg { width: 38px; height: 38px; }
+    h1 {
+      margin: 0 0 10px;
+      color: var(--primary);
+      font-family: "Amiri", Georgia, serif;
+      font-size: clamp(2rem, 8vw, 2.7rem);
+      line-height: 1.35;
+    }
+    .lead {
+      margin: 0 auto;
+      max-width: 470px;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+    .note {
+      margin: 22px 0 0;
+      padding: 14px 16px;
+      color: #4C514A;
+      background: #F4F6F1;
+      border: 1px solid #D9E0D4;
+      border-radius: 14px;
+    }
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 11px 16px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .button-primary {
+      color: #fff;
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    .button-primary:hover { background: var(--primary-hover); }
+    .button-secondary { color: var(--primary); background: var(--soft); }
+    .library { margin-top: 24px; color: var(--muted); font-size: 0.9rem; }
+    .library strong { color: var(--primary); }
+    @media (max-width: 480px) {
+      .actions { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="success-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m5 12 4 4L19 6"/>
+      </svg>
+    </div>
+
+    <h1>تم إرسال البلاغ بنجاح</h1>
+    <p class="lead">
+      شكراً لأمانتك وحرصك على إعادة الكتاب. وصل البلاغ إلى بريد المكتبة،
+      وسنتواصل معك عبر الوسيلة التي اخترتها.
+    </p>
+
+    <p class="note">يمكنك الآن إغلاق هذه الصفحة، ولا حاجة إلى إرسال البلاغ مرة أخرى.</p>
+
+    <div class="actions">
+      <a class="button button-primary" href="./">العودة إلى الصفحة الرئيسية</a>
+      <a class="button button-secondary" href="./#reportFormTitle">إرسال بلاغ آخر</a>
+    </div>
+
+    <p class="library"><strong>مكتبة سَيْدِنا الشخصية</strong><br>شكراً لحرصك على إعادة الكتب إلى أصحابها.</p>
+  </main>
+</body>
+</html>
