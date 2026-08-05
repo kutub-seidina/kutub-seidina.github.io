@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -8,7 +9,7 @@
   <title>إعادة كتاب | مكتبة شخصية</title>
 
   <script>
-    (function() {
+    (function () {
       let savedLang = null;
       try {
         savedLang = localStorage.getItem("kutub-seidina:language");
@@ -21,16 +22,16 @@
       document.documentElement.dir = activeLang === "ar" ? "rtl" : "ltr";
       document.documentElement.classList.remove("ar-active", "en-active");
       document.documentElement.classList.add(activeLang + "-active");
-      
+
       const titles = {
         ar: "إعادة كتاب | مكتبة سَيْدِنا",
         en: "Return a Book | Saydina Library"
       };
       document.title = titles[activeLang];
-      
+
       document.documentElement.classList.add("i18n-pending");
-      
-      window.setTimeout(function() {
+
+      window.setTimeout(function () {
         document.documentElement.classList.remove("i18n-pending");
       }, 1500);
     })();
@@ -38,7 +39,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@400;500;700&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="./assets/css/styles.css">
   <script src="./assets/js/i18n.js" defer></script>
@@ -51,10 +53,12 @@
       <header class="hero">
         <button class="lang-switch" id="langSwitch" aria-label="Switch to English" lang="en" hidden>English</button>
         <div class="logo" aria-hidden="true">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 15.5c8.7-2.8 16.6-.7 24 5.8v29.2c-7.4-6.5-15.3-8.6-24-5.8V15.5Z"/>
-            <path d="M56 15.5c-8.7-2.8-16.6-.7-24 5.8v29.2c7.4-6.5 15.3-8.6 24-5.8V15.5Z"/>
-            <path d="M14 23.5c4.6-.8 8.6.2 12.4 2.7M14 31.5c4.6-.8 8.6.2 12.4 2.7M50 23.5c-4.6-.8-8.6.2-12.4 2.7M50 31.5c-4.6-.8-8.6.2-12.4 2.7"/>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M8 15.5c8.7-2.8 16.6-.7 24 5.8v29.2c-7.4-6.5-15.3-8.6-24-5.8V15.5Z" />
+            <path d="M56 15.5c-8.7-2.8-16.6-.7-24 5.8v29.2c7.4-6.5 15.3-8.6 24-5.8V15.5Z" />
+            <path
+              d="M14 23.5c4.6-.8 8.6.2 12.4 2.7M14 31.5c4.6-.8 8.6.2 12.4 2.7M50 23.5c-4.6-.8-8.6.2-12.4 2.7M50 31.5c-4.6-.8-8.6.2-12.4 2.7" />
           </svg>
         </div>
 
@@ -73,9 +77,10 @@
 
         <div class="main-cta-wrap">
           <a class="primary-action" id="reportFormLink" href="#reportFormTitle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 4h16v16H4z"/>
-              <path d="m4 7 8 6 8-6"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16v16H4z" />
+              <path d="m4 7 8 6 8-6" />
             </svg>
             <span data-i18n="mainCta">إرسال بلاغ عن الكتاب</span>
           </a>
@@ -84,13 +89,15 @@
         <div class="email-alt-section">
           <p class="email-alt-label" data-i18n="emailAltLabel">أو تواصل معنا مباشرة عبر البريد الإلكتروني:</p>
           <div class="email-alt-row">
-            <a class="email-address" id="emailButton" href="mailto:ahmad.seidina@gmail.com?subject=إعادة%20كتاب%20مفقود&amp;body=مرحباً،%0A%0Aعثرت%20على%20كتاب%20يحمل%20ختم%20مكتبتكم%20وأود%20ترتيب%20إعادته.%0A%0Aتفاصيل%20الكتاب:%0A-%20اسم%20الكتاب:%0A-%20مكان%20العثور%20عليه:%0A%0Aوشكرًا%20لكم.">
+            <a class="email-address" id="emailButton"
+              href="mailto:ahmad.seidina@gmail.com?subject=إعادة%20كتاب%20مفقود&amp;body=مرحباً،%0A%0Aعثرت%20على%20كتاب%20يحمل%20ختم%20مكتبتكم%20وأود%20ترتيب%20إعادته.%0A%0Aتفاصيل%20الكتاب:%0A-%20اسم%20الكتاب:%0A-%20مكان%20العثور%20عليه:%0A%0Aوشكرًا%20لكم.">
               <span id="emailAddress">ahmad.seidina@gmail.com</span>
             </a>
             <button class="copy-button" id="copyEmail" type="button">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="9" y="9" width="11" height="11" rx="2"/>
-                <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="11" height="11" rx="2" />
+                <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3" />
               </svg>
               <span data-i18n="copyEmail">نسخ البريد</span>
             </button>
@@ -99,9 +106,10 @@
 
         <section class="steps" aria-labelledby="stepsTitle">
           <h2 class="section-title" id="stepsTitle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M8 6h13M8 12h13M8 18h13"/>
-              <path d="M3 6h.01M3 12h.01M3 18h.01"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 6h13M8 12h13M8 18h13" />
+              <path d="M3 6h.01M3 12h.01M3 18h.01" />
             </svg>
             <span data-i18n="steps.title">خطوات إعادة الكتاب</span>
           </h2>
@@ -113,7 +121,8 @@
             </li>
             <li>
               <span class="step-title" data-i18n="steps.step2.title">أضف مكان العثور إن كان معروفاً</span>
-              <span class="step-description" data-i18n="steps.step2.desc">هذه المعلومة اختيارية، لكنها تساعد على ترتيب الإعادة.</span>
+              <span class="step-description" data-i18n="steps.step2.desc">هذه المعلومة اختيارية، لكنها تساعد على ترتيب
+                الإعادة.</span>
             </li>
             <li>
               <span class="step-title" data-i18n="steps.step3.title">نسّق طريقة الإعادة</span>
@@ -124,10 +133,11 @@
 
         <section class="report-form-section" aria-labelledby="reportFormTitle">
           <h2 class="section-title" id="reportFormTitle" tabindex="-1">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 4h16v16H4z"/>
-              <path d="m4 7 8 6 8-6"/>
-              <path d="M8 3v2M16 3v2"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16v16H4z" />
+              <path d="m4 7 8 6 8-6" />
+              <path d="M8 3v2M16 3v2" />
             </svg>
             <span data-i18n="form.title">إرسال بلاغ سريع</span>
           </h2>
@@ -136,16 +146,12 @@
             يمكنك إرسال معلومات الكتاب مباشرة من هنا، وسنرد عليك عبر الوسيلة التي تختارها.
           </p>
 
-          <form
-            class="report-form"
-            id="bookReportForm"
-            action="https://formsubmit.co/ahmad.seidina@gmail.com"
-            method="POST"
-            enctype="multipart/form-data"
-          >
-            <input type="hidden" id="submitLang" name="Language" value="ar">
-            <input type="hidden" id="submitSubject" name="_subject" value="بلاغ جديد عن كتاب تم العثور عليه">
-            <input type="hidden" name="_template" value="table">
+          <form class="report-form" id="bookReportForm" action="https://formsubmit.co/ahmad.seidina@gmail.com"
+            method="POST" enctype="multipart/form-data">
+            <input type="hidden" id="submitLang" name="لغة الواجهة" value="العربية">
+            <input type="hidden" id="submitSubject" name="_subject" value="بلاغ إعادة كتاب جديد">
+            <input type="hidden" id="submitReplyMethod" name="وسيلة التواصل المفضلة" value="">
+            <input type="hidden" name="_template" value="basic">
             <input type="hidden" id="successRedirect" name="_next" value="https://kutub-seidina.github.io/thanks.html">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
             <p class="required-note" data-i18n="form.requiredNote">الحقول المعلّمة بعلامة * مطلوبة.</p>
@@ -157,51 +163,46 @@
             <div id="draftNotice" class="draft-notice" aria-live="polite" hidden>
               <div class="draft-notice-content">
                 <span class="draft-text" data-i18n="draftNotice.restored">استُعيدت مسودتك من هذه الجلسة.</span>
-                <span class="draft-image-warning" id="draftImageWarning" data-i18n="draftNotice.imageWarning" hidden>يرجى إعادة إرفاق صورة غلاف الكتاب.</span>
+                <span class="draft-image-warning" id="draftImageWarning" data-i18n="draftNotice.imageWarning"
+                  hidden>يرجى إعادة إرفاق صورة غلاف الكتاب.</span>
               </div>
-              <button type="button" class="btn-clear-draft" id="clearDraftBtn" data-i18n="draftNotice.deleteBtn">حذف المسودة</button>
+              <button type="button" class="btn-clear-draft" id="clearDraftBtn" data-i18n="draftNotice.deleteBtn">حذف
+                المسودة</button>
             </div>
-            
+
             <fieldset id="bookIdentityGroup" aria-describedby="bookIdentityHint bookIdentityError">
-              <legend class="form-legend"><span data-i18n="form.identity.legend">التعرّف على الكتاب</span> <span class="required-asterisk" aria-hidden="true">*</span></legend>
-              <p class="field-hint" id="bookIdentityHint" data-i18n="form.identity.hint">أدخل اسم الكتاب أو أرفق صورة واضحة لغلافه — يكفي أحدهما.</p>
+              <legend class="form-legend"><span data-i18n="form.identity.legend">التعرّف على الكتاب</span> <span
+                  class="required-asterisk" aria-hidden="true">*</span></legend>
+              <p class="field-hint" id="bookIdentityHint" data-i18n="form.identity.hint">أدخل اسم الكتاب أو أرفق صورة
+                واضحة لغلافه — يكفي أحدهما.</p>
 
               <div class="form-field" id="bookIdentityField">
                 <label for="bookTitle" data-i18n="form.bookTitle.label">اسم الكتاب — بديل عن الصورة</label>
-                <input
-                  id="bookTitle"
-                  name="Book Name / اسم الكتاب"
-                  type="text"
-                  autocomplete="off"
-                  maxlength="150"
-                  dir="auto"
-                  data-i18n-placeholder="form.bookTitle.placeholder"
-                  placeholder="اكتب اسم الكتاب إن كان معروفاً"
-                >
+                <input id="bookTitle" name="اسم الكتاب" type="text" autocomplete="off" maxlength="150" dir="auto"
+                  data-i18n-placeholder="form.bookTitle.placeholder" placeholder="اكتب اسم الكتاب إن كان معروفاً">
               </div>
 
               <div class="form-field" id="bookCoverField">
                 <label for="bookCover" data-i18n="form.bookCover.label">صورة غلاف الكتاب — بديل عن الاسم</label>
                 <div class="file-input-wrap">
-                  <input
-                    class="file-input"
-                    id="bookCover"
-                    name="attachment"
-                    type="file"
-                    accept=".jpg,.jpeg,.png,image/jpeg,image/png"
-                    aria-describedby="bookCoverHint bookCoverError"
-                  >
+                  <input class="file-input" id="bookCover" name="صورة غلاف الكتاب" type="file"
+                    accept=".jpg,.jpeg,.png,image/jpeg,image/png" aria-describedby="bookCoverHint bookCoverError">
                   <label for="bookCover" class="custom-file-btn">
                     <span class="file-btn-text" data-i18n="form.bookCover.btn">اختيار صورة</span>
-                    <span class="file-status-text" id="fileStatusText" data-i18n="form.bookCover.noFile">لم يتم اختيار ملف</span>
+                    <span class="file-status-text" id="fileStatusText" data-i18n="form.bookCover.noFile">لم يتم اختيار
+                      ملف</span>
                   </label>
-                  <p class="field-hint" id="bookCoverHint" data-i18n="form.bookCover.hint">صورة JPG أو PNG، وبحجم لا يتجاوز 5 ميجابايت.</p>
+                  <p class="field-hint" id="bookCoverHint" data-i18n="form.bookCover.hint">صورة JPG أو PNG، وبحجم لا
+                    يتجاوز 5 ميجابايت.</p>
                   <p class="field-error" id="bookCoverError" hidden></p>
                   <div class="image-preview" id="imagePreview" aria-live="polite">
-                    <img id="imagePreviewThumbnail" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" alt="معاينة صورة غلاف الكتاب" data-i18n-alt="form.imagePreviewAlt">
+                    <img id="imagePreviewThumbnail"
+                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                      alt="معاينة صورة غلاف الكتاب" data-i18n-alt="form.imagePreviewAlt">
                     <div class="image-preview-details">
                       <span class="image-preview-text" id="imagePreviewName"></span>
-                      <button class="remove-image" id="removeImage" type="button" data-i18n="form.removeImage">إزالة الصورة</button>
+                      <button class="remove-image" id="removeImage" type="button" data-i18n="form.removeImage">إزالة
+                        الصورة</button>
                     </div>
                   </div>
                 </div>
@@ -210,38 +211,27 @@
             </fieldset>
 
             <div class="form-field" id="foundLocationField">
-              <label for="foundLocation" data-i18n="form.foundLocation.label">مكان العثور على الكتاب (اختياري، موصى به)</label>
-              <input
-                id="foundLocation"
-                name="Found Location / مكان العثور على الكتاب"
-                type="text"
-                autocomplete="off"
-                maxlength="200"
-                dir="auto"
-                data-i18n-placeholder="form.foundLocation.placeholder"
-                placeholder="مثال: مكتبة، جامعة، مقهى أو حي"
-              >
+              <label for="foundLocation" data-i18n="form.foundLocation.label">مكان العثور على الكتاب (اختياري، موصى
+                به)</label>
+              <input id="foundLocation" name="مكان العثور على الكتاب" type="text" autocomplete="off" maxlength="200"
+                dir="auto" data-i18n-placeholder="form.foundLocation.placeholder"
+                placeholder="مثال: مكتبة، جامعة، مقهى أو حي">
             </div>
 
             <div class="form-field" id="reportMessageField">
               <label for="reportMessage"><span data-i18n="form.message.label">رسالة إضافية (اختياري)</span></label>
-              <textarea
-                id="reportMessage"
-                name="Message / الرسالة"
-                maxlength="1000"
-                dir="auto"
-                aria-describedby="messageCounter"
+              <textarea id="reportMessage" name="الرسالة" maxlength="1000" dir="auto" aria-describedby="messageCounter"
                 data-i18n-placeholder="form.message.placeholder"
-                placeholder="أضف أي تفاصيل تساعد على التعرّف على الكتاب أو ترتيب إعادته"
-              ></textarea>
+                placeholder="أضف أي تفاصيل تساعد على التعرّف على الكتاب أو ترتيب إعادته"></textarea>
               <div class="counter-row" id="messageCounter" aria-live="polite">0 / 1000</div>
             </div>
 
             <div class="form-field" id="replyField">
               <div class="reply-grid">
                 <div class="reply-control" id="replyMethodField">
-                  <label for="replyMethod"><span data-i18n="form.replyMethod.label">وسيلة الرد المفضلة</span> <span class="required-asterisk" aria-hidden="true">*</span></label>
-                  <select id="replyMethod" name="Reply Method / وسيلة الرد المفضلة" aria-describedby="replyMethodError" required>
+                  <label for="replyMethod"><span data-i18n="form.replyMethod.label">وسيلة الرد المفضلة</span> <span
+                      class="required-asterisk" aria-hidden="true">*</span></label>
+                  <select id="replyMethod" aria-describedby="replyMethodError" required>
                     <option value="" selected disabled data-i18n="form.replyMethod.default">اختر الوسيلة</option>
                     <option value="email" data-i18n="form.replyMethod.email">البريد الإلكتروني</option>
                     <option value="phone" data-i18n="form.replyMethod.phone">واتساب أو اتصال</option>
@@ -253,35 +243,32 @@
 
                 <div class="reply-control" id="replyContactField">
                   <label for="replyContact">
-                    <span id="replyContactLabelText" data-i18n="form.replyContact.label.default">بيانات التواصل للرد</span>
+                    <span id="replyContactLabelText" data-i18n="form.replyContact.label.default">بيانات التواصل
+                      للرد</span>
                     <span class="required-asterisk" aria-hidden="true">*</span>
                   </label>
-                  <input
-                    id="replyContact"
-                    name="Contact Details / بيانات التواصل للرد"
-                    type="text"
-                    autocomplete="off"
-                    maxlength="120"
+                  <input id="replyContact" name="بيانات التواصل" type="text" autocomplete="off" maxlength="120"
                     aria-describedby="replyContactHint replyContactError"
-                    data-i18n-placeholder="form.replyContact.placeholder.default"
-                    placeholder="اختر وسيلة الرد أولاً"
-                    required
-                  >
-                  <p class="field-hint" id="replyContactHint" data-i18n="form.replyContact.hint.default">لن تُستخدم هذه البيانات إلا للرد بشأن إعادة الكتاب.</p>
+                    data-i18n-placeholder="form.replyContact.placeholder.default" placeholder="اختر وسيلة الرد أولاً"
+                    required>
+                  <p class="field-hint" id="replyContactHint" data-i18n="form.replyContact.hint.default">لن تُستخدم هذه
+                    البيانات إلا للرد بشأن إعادة الكتاب.</p>
                   <p class="field-error" id="replyContactError" hidden></p>
                 </div>
               </div>
             </div>
 
             <button class="submit-report" id="submitReport" type="submit">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="m22 2-7 20-4-9-9-4Z"/>
-                <path d="M22 2 11 13"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="m22 2-7 20-4-9-9-4Z" />
+                <path d="M22 2 11 13" />
               </svg>
               <span class="submit-spinner" aria-hidden="true"></span>
               <span class="submit-label" data-i18n="form.submit">إرسال البلاغ</span>
             </button>
-            <p class="submit-help" data-i18n="form.submit.help">قد يستغرق الانتقال لصفحة التأكيد لحظات تبعاً لسرعة الاتصال لديك.</p>
+            <p class="submit-help" data-i18n="form.submit.help">قد يستغرق الانتقال لصفحة التأكيد لحظات تبعاً لسرعة
+              الاتصال لديك.</p>
 
             <p class="form-note" data-i18n="form.privacy">
               قد تُحفظ الحقول النصية مؤقتًا على جهازك خلال هذه الجلسة لتجنّب فقدانها، دون حفظ صورة الغلاف.
@@ -300,8 +287,10 @@
 
     <noscript>
       <div class="noscript">
-        <p>بعض التحسينات، مثل معاينة الصورة والتحقق المخصص، تحتاج إلى JavaScript. يمكنك تعبئة النموذج باستخدام التحقق الأساسي للمتصفح، أو التواصل عبر البريد الإلكتروني الموضح أعلاه.</p>
-        <p style="margin-top: 8px;">Some features, like image preview and custom validation, require JavaScript. You can fill the form using basic browser validation, or contact via the email shown above.</p>
+        <p>بعض التحسينات، مثل معاينة الصورة والتحقق المخصص، تحتاج إلى JavaScript. يمكنك تعبئة النموذج باستخدام التحقق
+          الأساسي للمتصفح، أو التواصل عبر البريد الإلكتروني الموضح أعلاه.</p>
+        <p style="margin-top: 8px;">Some features, like image preview and custom validation, require JavaScript. You can
+          fill the form using basic browser validation, or contact via the email shown above.</p>
       </div>
     </noscript>
   </div>
@@ -310,4 +299,5 @@
 
   <!-- تم فصل المنطق البرمجي إلى assets/js/main.js -->
 </body>
+
 </html>
